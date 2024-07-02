@@ -5,7 +5,7 @@ import { Outlet } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 
 const MainLayout = () => {
-  const [profilePic, setProfilePic] = useState('');
+  const [profilePic, setProfilePic] = useState(JSON.parse(localStorage.getItem('profilePic')));
 
   return (
     <>

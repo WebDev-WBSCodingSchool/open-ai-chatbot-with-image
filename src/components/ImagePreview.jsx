@@ -1,4 +1,5 @@
 import { useOutletContext } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const ImagePreview = () => {
   const { profilePic } = useOutletContext();
@@ -11,7 +12,11 @@ const ImagePreview = () => {
         revised_prompt: profilePic.revised_prompt
       })
     );
+    toast.success('Image saved successfully');
   };
+
+  const isImageTheSame =
+    JSON.parse(localStorage.getItem('profilePic')).b64_json === profilePic.b64_json;
 
   if (!profilePic)
     return (
@@ -36,13 +41,17 @@ const ImagePreview = () => {
     <>
       <div className='my-5 flex flex-col justify-center items-center gap-3'>
         <img
-          src={`data:image/png;base64,${profilePic.b64_json}`}
+          src={
+            profilePic.b64_json.includes('data:image/png;base64,')
+              ? profilePic.b64_json
+              : `data:image/png;base64,${profilePic.b64_json}`
+          }
           alt='Generated Image'
           className='rounded-lg shadow-lg'
           width={400}
         />
-        <button className='btn btn-secondary' onClick={saveImage}>
-          Save to local storage
+        <button className='btn btn-secondary' onClick={saveImage} disabled={isImageTheSame}>
+          {isImageTheSame ? 'Image already saved' : 'Save Image'}
         </button>
       </div>
       <p>
