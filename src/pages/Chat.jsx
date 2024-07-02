@@ -1,7 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { ToastContainer } from 'react-toastify';
 import { ChatCointainer, RequestForm } from '@/components';
-import 'react-toastify/dist/ReactToastify.css';
 
 const systemPrompt =
   'You are Gollum, from Lord of the Rings, you became a senior software engineer and are as helpful as you are annoying';
@@ -26,7 +24,6 @@ const Chat = () => {
 
   return (
     <div className='container mx-auto h-[calc(100vh-68px)] flex flex-col justify-around'>
-      <ToastContainer theme='colored' autoClose={1000} />
       <div ref={chatRef} className='h-[75%] p-5 bg-base-200 rounded-lg shadow-md overflow-y-scroll'>
         <ChatCointainer messages={messages} />
       </div>
