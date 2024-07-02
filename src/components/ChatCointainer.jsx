@@ -21,7 +21,7 @@ const renderer = {
   }
 };
 
-const Chat = ({ messages }) => {
+const ChatContainer = ({ messages }) => {
   return messages
     .filter(m => m.role !== 'system') // Filter out system messages
     .map(m => (
@@ -39,4 +39,4 @@ const Chat = ({ messages }) => {
     ));
 };
 
-export default Chat;
+export default ChatContainer;

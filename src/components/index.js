@@ -1,4 +1,5 @@
-import Chat from './Chat';
+import ChatCointainer from './ChatCointainer';
+import NavBar from './Navbar';
 import RequestForm from './RequestForm';
 
-export { Chat, RequestForm };
+export { ChatCointainer, NavBar, RequestForm };
